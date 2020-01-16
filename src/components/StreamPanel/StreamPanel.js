@@ -13,7 +13,7 @@ const colums = {
 
 const StreamPanel = () => {
   return (
-    <div style={{ display: 'flex', padding: '24px 8px', background: '#fff', minHeight: 300 }}>
+    <div className={styles.list}>
       <div className={styles.pic} />
       <div>
         <Title level={2}>{colums.title}</Title>

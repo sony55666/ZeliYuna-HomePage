@@ -1,6 +1,17 @@
 
-.logo {
-  height: 200px;
+.block {
+  text-align: center;
+  height: 350px;
   background: rgba(255, 255, 255, 0.2);
   margin: 16px;
+}
+
+.block > ul {
+  padding-inline-start: 0;
+}
+
+.block > img {
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
 }

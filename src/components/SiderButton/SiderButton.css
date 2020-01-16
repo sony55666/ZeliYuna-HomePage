@@ -1,4 +1,15 @@
-.sidebar-button-link {
-    background: rgba(90, 87, 246, 0.2);
-    margin: 16px;
+.sidebarButtonLink {
+    font-size: 20px;
+    color: beige;
+    /* background: rgba(25, 24, 47, 0.2); */
+    padding: 20px 0;
+}
+
+.sidebarButtonLink > a:link{
+    text-decoration:none;
+    color:beige;
+}
+
+.sidebarButtonLink > a:visited{
+    color:beige;
 }

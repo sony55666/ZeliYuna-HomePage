@@ -1,11 +1,27 @@
 .pic {
-    width: 250px;
-    height: 250px;
-    background: rgb(255, 0, 0);
-    margin: 0 20px;
+  width: 250px;
+  height: 250px;
+  background: rgb(255, 0, 0);
+  margin: 0 20px;
   }
 
 .sidebar-button-link {
-    background: rgba(90, 87, 246, 0.2);
-    margin: 16px;
+  background: rgba(90, 87, 246, 0.2);
+  margin: 16px;
 }
+
+.list{
+  display: flex;
+  margin-right: '';
+  padding: 24px 8px;
+  background-color: #fff;
+  min-height: 300;
+}
+
+@media screen and (min-width: 1201px) { 
+  .list {width: 74%} 
+} 
+
+@media screen and (max-width: 1201px) { 
+  .list {width: 100%} 
+} 
