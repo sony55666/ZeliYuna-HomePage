@@ -7,13 +7,14 @@ import ProfileImg from '../picture/profileImg.jpg';
 import SiderPic from '../picture/blog1.jpeg';
 import SiderButton from '../components/SiderButton/SiderButton';
 import { render } from 'react-dom';
+import _ from 'lodash';
 
 
 const { Header, Content, Footer, Sider } = Layout;
 const Profile_Colums = [{
   title: '關於',
   type: 'question',
-  link: 'handleProfile()',
+  link: '',
 }, {
   title: 'Facebook',
   type: 'facebook',
@@ -44,38 +45,48 @@ class IndexPage extends Component {
           <p>也影響我變得樂觀、開始對事情有多面向思考的能力。</p>
         </div>
       ),
-      onOk() {},
+      onOk() { },
     });
   }
 
+  // componentDidMount() {
+  //   this.setBlogInfo();
+  // }
+
+  // setBlogInfo(){
+  //   const { dispatch } = this.props;
+
+  //   dispatch({
+  //     type: 'blogData/GET_BLOG_INFO'
+  //   })
+  // }
+
   render() {
+    const { BlogInfo } = this.props;
     let Profile_lists = [];
-    let count = 0;
+    let Blog_lists = [];
+    let P_count = 0;
+    let B_count = 0;
 
     for (let value of Profile_Colums) {
-      Profile_lists.push(<SiderButton title={value.title} type={value.type} link={value.link} key={count} handleProfile={this.handleProfile}></SiderButton>);
-      count++;
+      Profile_lists.push(<SiderButton title={value.title} type={value.type} link={value.link} key={P_count} handleProfile={this.handleProfile}></SiderButton>);
+      P_count++;
+    }
+
+    for (let value of BlogInfo) {
+      Blog_lists.push(
+        <Content style={{ margin: '24px 16px 0' }}>
+          <StreamPanel title={value.title} date={value.date} content={value.content} list={value.list} key={B_count} count={B_count}></StreamPanel>
+        </Content>
+      )
+      B_count++;
     }
 
     return (
       <Layout>
         <Layout>
-          <Content style={{ margin: '24px 16px 0' }}>
-            <StreamPanel></StreamPanel>
-          </Content>
-          <Content style={{ margin: '24px 16px 0' }}>
-            <StreamPanel></StreamPanel>
-          </Content>
-          <Content style={{ margin: '24px 16px 0' }}>
-            <StreamPanel></StreamPanel>
-          </Content>
-          <Content style={{ margin: '24px 16px 0' }}>
-            <StreamPanel></StreamPanel>
-          </Content>
-          <Content style={{ margin: '24px 16px 0' }}>
-            <StreamPanel></StreamPanel>
-          </Content>
-          <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+          { Blog_lists }
+          <Footer style={{ textAlign: 'center' }}> ©2019 Created by Ant UED</Footer>
         </Layout>
         <Sider
           breakpoint="xl"
@@ -118,8 +129,10 @@ class IndexPage extends Component {
 
 }
 
-IndexPage.propTypes = {
-};
+const mapStateToProps = (state) => {
+  return {
+    BlogInfo: _.get(state, 'blogData.BlogInfo', null),
+  }
+}
 
-
-export default connect()(IndexPage);
+export default connect(mapStateToProps)(IndexPage);

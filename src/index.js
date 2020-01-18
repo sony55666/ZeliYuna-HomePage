@@ -11,6 +11,7 @@ const app = dva();
 // app.model(require('./models/example').default);
 
 // 4. Router
+app.model(require('./models/blogData').default);
 app.router(require('./router').default);
 
 // 5. Start
