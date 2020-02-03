@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'dva';
-import styles from './IndexPage.css';
+import styles from './IndexLayout.css';
 import { Layout, Menu, Modal } from 'antd';
 import StreamPanel from '../components/StreamPanel/StreamPanel';
 import ProfileImg from '../picture/profileImg.jpg';
+import InfoImg from '../picture/info1.jpg';
 import SiderPic from '../picture/blog1.jpeg';
 import SiderButton from '../components/SiderButton/SiderButton';
 import { render } from 'react-dom';
 import _ from 'lodash';
 
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Footer, Sider } = Layout;
 const Profile_Colums = [{
   title: '關於',
   type: 'question',
@@ -33,16 +34,18 @@ const Profile_Colums = [{
   link: 'mailto:sam22643112@gmail.com',
 }]
 
-class IndexPage extends Component {
+class IndexLayout extends Component {
 
   handleProfile = () => {
     Modal.info({
       title: '介紹',
       content: (
         <div>
-          <p>在繁忙的都市裡，深刻體會到社會快速的節奏，</p>
-          <p>這使我有著相當大的抗壓性，在這之中脫穎而出，</p>
-          <p>也影響我變得樂觀、開始對事情有多面向思考的能力。</p>
+          <img alt="profile-p" src={InfoImg} width="300" height="300" />
+          <p>在繁忙的都市裡，深刻體會到社會快速的節奏</p>
+          <p>這使我有著相當大的抗壓性，在這之中脫穎而出</p>
+          <p>也影響我變得樂觀</p>
+          <p>開始對事情有多面向思考的能力。</p>
         </div>
       ),
       onOk() { },
@@ -62,30 +65,32 @@ class IndexPage extends Component {
   // }
 
   render() {
-    const { BlogInfo } = this.props;
+    // const { BlogInfo } = this.props;
     let Profile_lists = [];
-    let Blog_lists = [];
+    // let Blog_lists = [];
     let P_count = 0;
-    let B_count = 0;
+    // let B_count = 0;
 
     for (let value of Profile_Colums) {
       Profile_lists.push(<SiderButton title={value.title} type={value.type} link={value.link} key={P_count} handleProfile={this.handleProfile}></SiderButton>);
       P_count++;
     }
 
-    for (let value of BlogInfo) {
-      Blog_lists.push(
-        <Content style={{ margin: '24px 16px 0' }}>
-          <StreamPanel title={value.title} date={value.date} content={value.content} list={value.list} key={B_count} count={B_count}></StreamPanel>
-        </Content>
-      )
-      B_count++;
-    }
+    // for (let value of BlogInfo) {
+    //   Blog_lists.push(
+    //     <Content style={{ margin: '24px 16px 0' }}>
+    //       <StreamPanel title={value.title} date={value.date} content={value.content} list={value.list} key={B_count} count={B_count}></StreamPanel>
+    //     </Content>
+    //   )
+    //   B_count++;
+    // }
 
     return (
       <Layout>
         <Layout>
-          { Blog_lists }
+          {
+            this.props.children
+          }
           <Footer style={{ textAlign: 'center' }}> ©2019 Created by Ant UED</Footer>
         </Layout>
         <Sider
@@ -135,4 +140,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(IndexPage);
+export default connect(mapStateToProps)(IndexLayout);

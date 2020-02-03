@@ -18,17 +18,31 @@ class StreamPanel extends Component {
 
   render() {
     const title = this.props.title;
-    const pic = this.props.pic;
     const date = this.props.date;
-    const content = this.props.content;
-    const count = this.props.count;
+    let blog_count = this.props.count + 1 ;
+    const Dipicamond = require('../../picture/blog' + blog_count + '.jpeg');
+    const content_br = _.split(this.props.content, '</br> ');
+    let content = '';
+    if (content_br.length > 7) {
+      content
+      for (let i = 0; i < content_br.length; i++) {
+        if (i < 6) {
+          content += content_br[i] + '</br> ';
+        }
+        else{
+          content = content + '</br> 繼續閱讀。。。。。。';
+          break;
+        }
+      }
+    }
 
     return (
-      <div className={styles.list} key={count}>
-        <img src={"../../picture/blog"+count+1+".jpeg"} alt={count} style={{ width: '250px', height: '250px', backGround: 'rgb(255, 0, 0)', margin: '0 20px' }}></img>
+
+      <div className={styles.list} key={blog_count}>
+        <img src={Dipicamond} alt={blog_count} style={{ width: '250px', height: '250px', backGround: 'rgb(255, 0, 0)', margin: '0 20px' }}></img>
         <div>
-          <Title level={2}>{title}</Title>
-          <div style={{ display: 'inline-block' }}>{date}</div>
+          <Title level={3}>{title}</Title>
+          <div style={{ display: 'inline-block', fontSize:'16px', marginBottom:'5px' }}>{date}</div>
           {/* dangerouslySetInnerHTML 將字串轉為html */}
           <div dangerouslySetInnerHTML={{ __html: content }}>
           </div>
