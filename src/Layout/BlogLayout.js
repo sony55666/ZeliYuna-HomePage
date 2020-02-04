@@ -9,19 +9,30 @@ const SubMenu = Menu.SubMenu;
 
 class BlogLayout extends Component {
 
-    componentDidMount() {
-        console.log(this.props.location);
-
-      }
-
     render() {
         const { BlogInfo } = this.props;
-        console.log(this.props);
-        console.log(this.props.match);
         return (
             <Layout>
-                <Header>Header</Header>
-                <Content>Content</Content>
+                <Header>
+                    <Menu
+                        theme="dark"
+                        mode="horizontal"
+                        defaultSelectedKeys={['1']}
+                        style={{ lineHeight: '64px' }}
+                    >
+                        <Menu.Item key="1">
+                            <a rel="noopener" style={{ color: 'rgb(255, 255, 255)', textDecoration: 'none' }} href={`/#/`}>
+                                <Icon type="rollback" style={{ fontSize: '24px', verticalAlign: 'middle' }} />
+                                首頁
+                            </a>
+                        </Menu.Item>
+                    </Menu>
+                </Header>
+                <Content style={{ padding: '50px' }}>
+                    {
+                        this.props.children
+                    }
+                </Content>
                 <Footer>Footer</Footer>
             </Layout>
         )

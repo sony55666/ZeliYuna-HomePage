@@ -1,8 +1,8 @@
 import React from 'react';
 import { Router, Route, Switch } from 'dva/router';
 import IndexPage from './routes/IndexPage/IndexPage';
-import AppSwitch from './routes/AppSwitch';
 import Blog from './routes/Blog/Blog';
+import AppSwitch from './routes/AppSwitch';
 
 function RouterConfig({ history }) {
   return (
@@ -10,7 +10,7 @@ function RouterConfig({ history }) {
       <Switch>
         <AppSwitch>
           <Route path="/" exact component={IndexPage} />
-          <Route path="/blog" exact component={Blog} />
+          <Route path="/blog/:id" exact component={Blog} />
         </AppSwitch>
       </Switch>
     </Router>

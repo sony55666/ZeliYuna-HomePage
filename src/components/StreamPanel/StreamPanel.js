@@ -19,7 +19,7 @@ class StreamPanel extends Component {
   render() {
     const title = this.props.title;
     const date = this.props.date;
-    let blog_count = this.props.count + 1 ;
+    let blog_count = this.props.count;
     const Dipicamond = require('../../picture/blog' + blog_count + '.jpeg');
     const content_br = _.split(this.props.content, '</br> ');
     let content = '';
