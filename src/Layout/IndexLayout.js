@@ -5,7 +5,7 @@ import { Layout, Menu, Modal } from 'antd';
 import StreamPanel from '../components/StreamPanel/StreamPanel';
 import ProfileImg from '../picture/profileImg.jpg';
 import InfoImg from '../picture/info1.jpg';
-import SiderPic from '../picture/blog1.jpeg';
+import SiderPic from '../picture/menu.jpeg';
 import SiderButton from '../components/SiderButton/SiderButton';
 import { render } from 'react-dom';
 import _ from 'lodash';
