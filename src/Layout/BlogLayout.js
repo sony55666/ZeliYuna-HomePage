@@ -85,7 +85,7 @@ class BlogLayout extends Component {
                         this.props.children
                     }
                 </Content>
-                <Footer>Footer</Footer>
+                <Footer> ©2020 Created by Sam Lin using React Dva</Footer>
             </Layout>
         )
     }

@@ -91,7 +91,7 @@ class IndexLayout extends Component {
           {
             this.props.children
           }
-          <Footer style={{ textAlign: 'center' }}> ©2019 Created by Ant UED</Footer>
+          <Footer style={{ textAlign: 'center' }}> ©2020 Created by Sam Lin using React Dva</Footer>
         </Layout>
         <Sider
           breakpoint="xl"
